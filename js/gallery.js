@@ -59,3 +59,24 @@ const images = [
     description: 'Lighthouse Coast Sea',
   },
 ];
+
+const createImageCardTemplate = image => {
+  return `
+    <li class="gallery-item">
+      <a class="gallery-link" href="${image.original}">
+        <img
+          class="gallery-image"
+          src="${image.preview}"
+          data-source="${image.original}"
+          alt="${image.description}"
+        />
+      </a>
+    </li>
+  `;
+};
+
+const imagesCardTemplate = images.map(el => createImageCardTemplate(el)).join('');
+
+const imagesListEl = document.querySelector('.js-gallery');
+
+imagesListEl.innerHTML = imagesCardTemplate;
